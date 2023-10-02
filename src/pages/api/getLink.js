@@ -4,7 +4,7 @@ export default function handler(req, res) {
   }
 
   const { businessName } = req.body;
-  const mockPlaceId = 'ChIJQ9MPHF5YwokRNOs38qSxDM8';
+  const mockPlaceId = 'AIzaSyCKgGs2_MctTb9Cf4MqTyP9vyU7Q6FnMFw';
 
   const googleReviewLink = `https://search.google.com/local/writereview?placeid=${mockPlaceId}`;
   res.status(200).json({ link: googleReviewLink });
