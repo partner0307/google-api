@@ -75,8 +75,7 @@ const Home = () => {
         <input ref={inputData} id="autocomplete" placeholder="Enter your address" type="text" />
         <button type='submit'>Generate Link</button>
       </form>
-      {reviewLink && <p>Google Review Link: {reviewLink}</p>}
-      {shortLink && <p>Shortened Link: {shortLink}</p>}
+      {reviewLink && shortLink && <a href={reviewLink}>Review Link: trustjoy.link/{shortLink.split('/')[1]}</a>}
     </div>
   )
 }
