@@ -17,23 +17,20 @@ const Home = () => {
     });
     const data = await response.json();
     setReviewLink(data.link);
-    const shortenedResponse = await fetch('https://api.dub.co/links?slug=Trustjoy', {
+    
+    const shortenedResponse = await fetch('/api/getShortLink', {
       method: 'POST',
-      headers: {
-        Authorization: 'Bearer 42ay4mZJ6YbrZbSZlgqs4iDe',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ domain: 'trustjoy.app', url: data.link })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ link: data.link })
     });
 
-    const shortenedData = await shortenedResponse.json();
-    setShortLink(shortenedData.shortUrl);
+    const shortLinkData = await shortenedResponse.json();
+    setShortLink(shortLinkData.url);
   }
 
   const handlePlaceChanged = () => {
     const place = autocomplete.getPlace();
     if (place && place.name) {
-      console.log(place.name);
       const businessNameWithAddress = place.name + ', ' + place.formatted_address;
       setBusinessName(businessNameWithAddress);
     }
