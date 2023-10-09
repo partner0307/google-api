@@ -17,13 +17,13 @@ const Home = () => {
     });
     const data = await response.json();
     setReviewLink(data.link);
-    const shortenedResponse = await fetch('https://api.rebrandly.com/v1/links', {
+    const shortenedResponse = await fetch('https://api.dub.co/links?slug=Trustjoy', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'apikey': 'f0965eec5d2549298769d8182d4e49c2',
+        Authorization: 'Bearer 42ay4mZJ6YbrZbSZlgqs4iDe',
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ destination: data.link })
+      body: JSON.stringify({ domain: 'trustjoy.app', url: data.link })
     });
 
     const shortenedData = await shortenedResponse.json();
