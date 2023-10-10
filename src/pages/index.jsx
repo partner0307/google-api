@@ -1,4 +1,7 @@
+import Image from 'next/image';
 import React, { useState, useEffect, useRef } from 'react';
+
+import Arrow from '@/assets/images/arrow.png';
 
 const Home = () => {
   const inputData = useRef('');
@@ -66,23 +69,30 @@ const Home = () => {
   }, [mapsLoaded]);
 
   return (
-    <div className='flex flex-col gap-8 pt-24 px-36 h-screen bg-background bg-cover bg-no-repeat'>
-      <h1 className='text-center text-5xl'>Google <span className='text-blue-600'>Review Link Generator</span></h1>
-      <p className='text-center'>Grow your online reputation with our free Google review link generator. In just a few clicks, generate unique Google review link and effortlessly share it with your customers.</p>
-      <div className='flex justify-center'>
-        <div className='rounded-md bg-white max-w-[920px] w-full p-11'>
-          <form onSubmit={handleSubmit} className='h-full'>
-            <div className='flex flex-col h-full justify-between'>
-              <label className='text-md'>Select your business</label>
-              <div className='flex gap-4'>
-                <input ref={inputData} id="autocomplete" placeholder="Enter your address" type="text" className='flex-1 min-h-6 w-full px-2.5 rounded border' />
-                <button type='submit' className='w-44 rounded-full bg-indigo-600 text-white p-4'>Generate my Link</button>
-              </div>
-              <div className='mt-2'>Review Link: {reviewLink && shortLink && <a href={reviewLink}>{shortLink}</a>}</div>
-            </div>
-          </form>
+    <div className='flex justify-center bg-background bg-cover bg-no-repeat h-screen pt-24 px-36'>
+      <div className='relative flex flex-col gap-10 max-w-[920px]'>
+        <h1 className='text-center text-5xl'>Google <span className='text-blue-600'>Review Link Generator</span></h1>
+        <div className='flex justify-center w-full'>
+          <p className='text-center'>Grow your online reputation with our free Google review link generator. In just a few clicks, generate unique Google review link and effortlessly share it with your customers.</p>
         </div>
-      </div>
+        <div className='flex justify-center'>
+          <div className='rounded-md bg-white w-full p-11'>
+            <form onSubmit={handleSubmit} className='h-full'>
+              <div className='flex flex-col h-full justify-between'>
+                <label className='text-md'>Select your business</label>
+                <div className='flex gap-4'>
+                  <input ref={inputData} id="autocomplete" placeholder="Enter your address" type="text" className='flex-1 min-h-6 w-full px-2.5 rounded border' />
+                  <button type='submit' className='w-44 rounded-full bg-indigo-600 text-white p-4'>Generate my Link</button>
+                </div>
+                <div className='mt-2'>Review Link: {reviewLink && shortLink && <a href={reviewLink}>{shortLink}</a>}</div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div className='absolute -left-24 top-10'>
+          <Image src={Arrow} width={90} height={150} />
+        </div>
+        </div>
     </div>
   )
 }
