@@ -4,6 +4,7 @@ export default async function handler(req, res) {
     try {
         const googleResponse = await fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${encodeURIComponent(businessName)}&inputtype=textquery&fields=place_id&key=${process.env.GOOGLE_API_KEY}`)
         const googleData = await googleResponse.json();
+        console.log(googleData)
 
         if (googleData.status !== 'OK' || !googleData.candidates || googleData.candidates.length === 0) {
             return res.status(404).json({ error: 'Business not found' });

@@ -89,7 +89,7 @@ const Home = () => {
                 <div className='flex items-center mt-2'>Review Link:&nbsp;
                   <div className='flex justify-center border p-2 w-52 h-full rounded-l-md'>{reviewLink && shortLink && <a href={shortLink}>{shortLink}</a>}</div>
                   <CopyToClipboard text={shortLink} onCopy={() => setCopied(true)}>
-                    <button className='px-4 py-2 bg-black text-white rounded-r-md'>{isCopied ? 'Copied' : 'Copy'}</button>
+                    <button className='px-4 py-2 bg-black text-white rounded-r-md h-full'>{isCopied ? 'Copied' : 'Copy'}</button>
                   </CopyToClipboard>
                 </div>
               </div>
