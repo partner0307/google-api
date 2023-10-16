@@ -11,6 +11,7 @@
   "dependencies": {
     "next": "latest",
     "react": "latest",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "latest",
     "react-google-autocomplete": "^2.7.3"
   },

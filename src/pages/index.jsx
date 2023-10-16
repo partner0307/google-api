@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React, { useState, useEffect, useRef } from 'react';
+import CopyToClipboard from 'react-copy-to-clipboard';
 
 import Arrow from '@/assets/images/arrow.png';
 
@@ -10,6 +11,7 @@ const Home = () => {
   const [shortLink, setShortLink] = useState('');
   const [mapsLoaded, setMapsLoaded] = useState(false);
   const [businessName, setBusinessName] = useState('');
+  const [isCopied, setCopied] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -84,7 +86,12 @@ const Home = () => {
                   <input ref={inputData} id="autocomplete" placeholder="Enter your address" type="text" className='md:flex-1 xs:h-12 sm:h-12 px-2.5 rounded border' />
                   <button type='submit' className='sm:self-center xs:self-center w-44 rounded-full bg-indigo-600 text-white p-4'>Generate my Link</button>
                 </div>
-                <div className='mt-2'>Review Link: {reviewLink && shortLink && <a href={reviewLink}>{shortLink}</a>}</div>
+                <div className='flex items-center mt-2'>Review Link:&nbsp;
+                  <div className='flex justify-center border p-2 w-52 h-full rounded-l-md'>{reviewLink && shortLink && <a href={shortLink}>{shortLink}</a>}</div>
+                  <CopyToClipboard text={shortLink} onCopy={() => setCopied(true)}>
+                    <button className='px-4 py-2 bg-black text-white rounded-r-md'>{isCopied ? 'Copied' : 'Copy'}</button>
+                  </CopyToClipboard>
+                </div>
               </div>
             </form>
           </div>
@@ -92,7 +99,7 @@ const Home = () => {
         <div className='absolute -left-24 top-10 md:block sm:hidden xs:hidden'>
           <Image src={Arrow} width={90} height={150} />
         </div>
-        </div>
+      </div>
     </div>
   )
 }
